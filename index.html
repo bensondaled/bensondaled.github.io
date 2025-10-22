@@ -1,39 +1,213 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title></title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FirstName | Professional Portfolio</title>
+  <style>
+    :root {
+      --accent: #005fcc;
+      --bg: #f9fafc;
+      --text: #222;
+      --muted: #555;
+      --card: #fff;
+      --radius: 14px;
+    }
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1></h1>
-        <p></p>
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 16px 80px;
+      display: flex;
+      justify-content: center;
+    }
 
-      </header>
-      <section>
-        <p>This page is a hub for some of my projects.</p>
+    main {
+      max-width: 800px;
+      width: 100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+    }
 
-<hr><ul>
-<li><p><a href="http://bensondaled.github.io/mumt306final">EEG Instrument</a> (2011): final project for MUMT306 at McGill. A MIDI musical instrument controlled by signals from a single-electrode EEG routed through Python.</p></li>
-<li><p><a href="http://bensondaled.github.io/mumt307final">Tempo Detection</a> (2012): final project for MUMT307 at McGill. A Matlab implementation of a tempo-detection algorithm.</p></li>
-<li><p><a href="http://bensondaled.github.io/pyfluo">pyfluo</a> (2013-ongoing): a Python library for analysis of 2-photon calcium imaging data.</p></li>
-<li><p><a href="https://github.com/bensondaled/trigger-interface">trigger-interface</a> (2014-ongoing): a small Python module for interfacing with DAQ and cameras during microscopy + conditioning experiments.</p></li>
-<li><p><a href="https://github.com/bensondaled/three-chamber">three-chamber</a> (2014-ongoing): A set of python scripts and tools for acquiring and analyzing mouse 3-chamber social experiments.</p></li>
-<li><p><a href="https://github.com/bensondaled/imaging-simulation">imaging-simulation</a> (2014-ongoing): an increasingly comprehensive modeling effort of granule cell 2-photon calcium imaging.</p></li>
-</ul>
-      </section>
+    header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
 
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    h2 {
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    .links {
+      margin-top: 1.5em;
+    }
+
+    .links a {
+      color: var(--accent);
+      margin-right: 1em;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 3em;
+    }
+
+    .projects {
+      display: grid;
+      gap: 24px;
+      margin-top: 1.5em;
+    }
+
+    .project {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+      transition: transform 0.15s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+    }
+
+    .project img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .project div {
+      padding: 16px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .project h3 {
+      margin: 0 0 0.3em 0;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .project {
+        flex-direction: column;
+      }
+
+      .project img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="https://via.placeholder.com/100" alt="Profile photo" />
+      <div>
+        <h1>FirstName</h1>
+        <h2>Professional Title or Role</h2>
+        <p>
+          Short summary about what you do — e.g., “Engineer and researcher focused on data-driven solutions for healthcare and neuroscience.”
+        </p>
+        <div class="links">
+          <a href="mailto:you@email.com">Email</a>
+          <a href="https://linkedin.com/in/...">LinkedIn</a>
+          <a href="https://github.com/...">GitHub</a>
+          <a href="resume.pdf">CV</a>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2 style="color: var(--text); margin-bottom: 0.8em;">Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <img src="https://via.placeholder.com/400x250" alt="Project image 1">
+          <div>
+            <h3>Project One</h3>
+            <p>Brief description of what this project is — its goal, impact, or key technology used. Keep it to two sentences max.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="https://via.placeholder.com/400x250" alt="Project image 2">
+          <div>
+            <h3>Project Two</h3>
+            <p>Another concise summary, e.g., “Developed a multimodal AI system for clinical data synthesis, improving workflow efficiency.”</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="https://via.placeholder.com/400x250" alt="Project image 3">
+          <div>
+            <h3>Project Three</h3>
+            <p>Final example — e.g., “Created an open-source toolkit for real-time signal analysis using Python and embedded systems.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> FirstName &nbsp;·&nbsp; Built with ♥ using GitHub Pages
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
+
