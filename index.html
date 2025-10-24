@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FirstName | Professional Portfolio</title>
+  <title>Ben Deverett | Professional Portfolio</title>
   <style>
     :root {
       --accent: #005fcc;
@@ -26,7 +26,7 @@
     }
 
     main {
-      max-width: 800px;
+      max-width: 1000px;
       width: 100%;
       background: var(--card);
       border-radius: var(--radius);
@@ -37,16 +37,55 @@
     header {
       display: flex;
       align-items: center;
-      gap: 24px;
-      margin-bottom: 32px;
+      gap: 32px;
+      margin: -48px -40px 48px; /* extend gradient full width */
+      padding: 48px 40px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      background: linear-gradient(135deg, #f2f2f2 0%, #d9d9d9 100%);
+      color: white;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
     header img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #eee;
+      border: 3px solid rgba(255,255,255,0.8);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #111;
+    }
+
+    header p {
+      margin: 0.5em 0 1.2em;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .links a {
+      color: white;
+      margin-right: 1em;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .links a:hover {
+      opacity: 0.8;
+    }
+
+    /* smaller screen adjustment */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
     }
 
     h1 {
@@ -84,43 +123,84 @@
       margin-top: 3em;
     }
 
-    .projects {
+    /* --- Project Grid --- */
+    .project-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 24px;
       margin-top: 1.5em;
     }
 
-    .project {
-      display: flex;
-      flex-wrap: wrap;
-      background: var(--bg);
+    .project-tile {
+      position: relative;
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       overflow: hidden;
-      transition: transform 0.15s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      background: #000;
     }
 
-    .project:hover {
-      transform: translateY(-3px);
+    .project-tile:hover {
+      transform: translateY(-4px);
     }
 
-    .project img {
-      width: 180px;
-      height: 120px;
+    .project-tile img {
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      flex-shrink: 0;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
 
-    .project div {
+    .project-tile:hover img {
+      transform: scale(1.05);
+      opacity: 0.6;
+    }
+
+    /* --- Title always visible --- */
+    .title-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
       padding: 16px;
-      flex: 1;
-      min-width: 200px;
+      box-sizing: border-box;
+      z-index: 1;
     }
 
-    .project h3 {
-      margin: 0 0 0.3em 0;
-      font-size: 1.1rem;
-      color: var(--accent);
+    .title-bar h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    /* --- Description appears on hover --- */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(20px);
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .project-tile:hover .overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .overlay p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin: 0;
     }
 
     footer {
@@ -137,16 +217,11 @@
       }
 
       header img {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
       }
 
-      .project {
-        flex-direction: column;
-      }
-
-      .project img {
-        width: 100%;
+      .project-tile img {
         height: 180px;
       }
     }
@@ -155,53 +230,139 @@
 <body>
   <main>
     <header>
-      <img src="https://via.placeholder.com/100" alt="Profile photo" />
+      <img src="img/bd.jpg" alt="deverett" />
       <div>
-        <h1>FirstName</h1>
-        <h2>Professional Title or Role</h2>
+        <h1>Ben Deverett, MD, PhD</h1>
         <p>
-          Short summary about what you do — e.g., “Engineer and researcher focused on data-driven solutions for healthcare and neuroscience.”
+          Anesthesiologist-scientist innovating at the intersection of brains, machines, and medicine.
         </p>
         <div class="links">
-          <a href="mailto:you@email.com">Email</a>
-          <a href="https://linkedin.com/in/...">LinkedIn</a>
-          <a href="https://github.com/...">GitHub</a>
-          <a href="resume.pdf">CV</a>
+          <a href="mailto:bendeverett@stanford.edu">Email</a>
+          <a href="https://www.linkedin.com/in/ben-deverett-12509729/">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=3Z1Gnn0AAAAJ&hl=en">Scholar</a>
         </div>
       </div>
     </header>
 
     <section>
-      <h2 style="color: var(--text); margin-bottom: 0.8em;">Projects</h2>
-      <div class="projects">
-        <div class="project">
-          <img src="https://via.placeholder.com/400x250" alt="Project image 1">
-          <div>
-            <h3>Project One</h3>
-            <p>Brief description of what this project is — its goal, impact, or key technology used. Keep it to two sentences max.</p>
-          </div>
+      <div class="project-grid">
+
+        <div class="project-tile">
+          <img src="img/predictor.png" alt="IntraOpML" />
+          <div class="title-bar"><h3>Intraoperative AI</h3></div>
+          <div class="overlay"><p>Developing and validating machine learning models to unlock the predictive power of intraoperative data and guide clinical decisions (manuscript in preparation).</p></div>
         </div>
 
-        <div class="project">
-          <img src="https://via.placeholder.com/400x250" alt="Project image 2">
-          <div>
-            <h3>Project Two</h3>
-            <p>Another concise summary, e.g., “Developed a multimodal AI system for clinical data synthesis, improving workflow efficiency.”</p>
-          </div>
+        <div class="project-tile">
+          <img src="img/tus.png" alt="Ultrasound" />
+          <div class="title-bar"><h3>Transcranial ultrasound neuromodulation</h3></div>
+          <div class="overlay"><p>Noninvasively modulating brain circuits with high spatial precision to enhance the way medications influence the brain (study ongoing, ask me for details).</p></div>
         </div>
 
-        <div class="project">
-          <img src="https://via.placeholder.com/400x250" alt="Project image 3">
-          <div>
-            <h3>Project Three</h3>
-            <p>Final example — e.g., “Created an open-source toolkit for real-time signal analysis using Python and embedded systems.”</p>
-          </div>
+        <div class="project-tile">
+          <img src="img/interface.png" alt="Anesthetic Repurposing" />
+          <div class="title-bar"><h3>Neuroengineering with anesthetics</h3></div>
+          <div class="overlay"><p>Developing <a href="https://github.com/bensondaled/dreamcode/" style="color:#fff;text-decoration:underline;">software</a> and hardware to perform closed-loop behavioral, pharmacologic, and EEG-based human studies.</p></div>
         </div>
+        
+        <div class="project-tile">
+          <img src="img/dream2.png" alt="Anesthetic Repurposing" />
+          <div class="title-bar"><h3>Psychoactive medication trials</h3></div>
+          <div class="overlay"><p><a href="https://stanfordhealthcare.org/publications/936/936414.html" style="color:#fff;text-decoration:underline;">Running clinical studies to test new therapeutic applications of psychedelics and anesthetic medications for new purposes</a> (in peer review and trials ongoing).</p></div>
+        </div>
+
+        <div class="project-tile">
+          <img src="img/dm.png" alt="Teaching" />
+          <div class="title-bar"><h3>Deep RL vs biological intelligence</h3></div>
+          <div class="overlay"><p><a href="https://arxiv.org/abs/1905.13469" style="color:#fff;text-decoration:underline;">Characterizing how the cognitive strategies of AI agents compare to those learned in neuroscience.</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/ecmo.png" alt="ECMO" />
+          <div class="title-bar"><h3>Neurologic complications in ECMO</h3></div>
+          <div class="overlay"><p><a href="https://www.ahajournals.org/doi/10.1161/circ.148.suppl_1.241" style="color:#fff;text-decoration:underline;">Identifying risk factors for neurologic injury in patients receiving cardiac mechanical support.</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/ket.png" alt="Ketamine" />
+          <div class="title-bar"><h3>Ketamine neurophysiology</h3></div>
+          <div class="overlay"><p><a href="https://www.medrxiv.org/content/10.1101/2025.08.05.25333019v1" style="color:#fff;text-decoration:underline;">Demonstrating that distinct cortical signatures of ketamine dissociate under wakefulness and anesthesia.</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/pc.png" alt="Teaching" />
+          <div class="title-bar"><h3>Cerebellar calcium imaging</h3></div>
+          <div class="overlay"><p><a href="https://pubmed.ncbi.nlm.nih.gov/30102151/" style="color:#fff;text-decoration:underline;">Studying neuronal encoding rules using cellular-resolution two-photon imaging of the rodent brain.</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/opto.png" alt="Teaching" />
+          <div class="title-bar"><h3>Precise modulation of memory</h3></div>
+          <div class="overlay"><p><a href="https://pubmed.ncbi.nlm.nih.gov/31311934/" style="color:#fff;text-decoration:underline;">Optogenetically altering neural activity and modeling its effects on memory.</a></p></div>
+        </div>
+        
+
+        <div class="project-tile">
+          <img src="img/brain.png" alt="Teaching" />
+          <div class="title-bar"><h3>Teaching</h3></div>
+          <div class="overlay"><p><a href="https://github.com/bensondaled/princetonpy" style="color:#fff;text-decoration:underline;">Educating</a> Princeton students in <a href="https://github.com/bensondaled/frs178" style="color:#fff;text-decoration:underline;">programming</a> and <a href="https://github.com/bensondaled/PNI_Programming_Statistics_Bootcamp_2018" style="color:#fff;text-decoration:underline;">math</a>; and Stanford residents on intravenous anesthetics and neuroanatomy.</p></div>
+        </div>
+
+        <div class="project-tile">
+          <img src="img/gh.png" alt="Teaching" />
+          <div class="title-bar"><h3>Global health education</h3></div>
+          <div class="overlay"><p><a href="https://globalhealth.stanford.edu/programs/clinical-research-launchpad-for-anesthesiologists-in-guyana-tanzania-rwanda-and-vietnam/" style="color:#fff;text-decoration:underline;">Collaborating with under-resourced medical centers in Guyana, Tanzania, Vietnam, and Rwanda to share clinical and research skills.</a></p></div>
+        </div>
+        
+        
+        <div class="project-tile">
+          <img src="img/mpog.jpg" alt="Teaching" />
+          <div class="title-bar"><h3>Perioperative outcomes</h3></div>
+          <div class="overlay"><p>Using multi-institutional operating room data to uncover how anesthesiologist habits influence patient outcomes (in peer review).</p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/causal.png" alt="Teaching" />
+          <div class="title-bar"><h3>Causal inference modeling</h3></div>
+          <div class="overlay"><p><a href="https://charleskemp.com/papers/deverettk_learningdeterministiccausalnetworksfromobservationaldata.pdf" style="color:#fff;text-decoration:underline;">Bayesian modeling of human inference strategies for inferring causality between observed events.</a></p></div>
+        </div>
+        
+
+        <div class="project-tile">
+          <img src="img/pseye.jpg" alt="PSEyePy" />
+          <div class="title-bar"><h3>PSEyePy</h3></div>
+          <div class="overlay"><p><a href="https://github.com/bensondaled/pseyepy" style="color:#fff;text-decoration:underline;">Open-source Python library for high-speed video capture using PlayStation Eye cameras.</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/ipad.png" alt="Teaching" />
+          <div class="title-bar"><h3>Human-computer optimization</h3></div>
+          <div class="overlay"><p>Reimagining how we interact with keyboards in iOS to improve efficiency on touchscreens.</p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/network.png" alt="Teaching" />
+          <div class="title-bar"><h3>Network visualization</h3></div>
+          <div class="overlay"><p>Using Amazon Mechanical Turk to study how we can represent measures of centrality in visual graph representations.</p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/midi.png" alt="midi" />
+          <div class="title-bar"><h3>EEG musical instrument</h3></div>
+          <div class="overlay"><p><a href="https://bensondaled.github.io/mumt306final/" style="color:#fff;text-decoration:underline;">Arduino-based MIDI musical instrument based on frontal EEG signals</a></p></div>
+        </div>
+        
+        <div class="project-tile">
+          <img src="img/ols.png" alt="ols" />
+          <div class="title-bar"><h3>Music production</h3></div>
+          <div class="overlay"><p>Numerous original musical production projects including for an<a href="https://girllikestheatre.com/2023/07/06/the-making-of-a-musical-spotlight-on-our-little-secret/" style="color:#fff;text-decoration:underline;">award-winning musical.</a></p></div>
+        </div>
+
       </div>
     </section>
 
     <footer>
-      © <span id="year"></span> FirstName &nbsp;·&nbsp; Built with ♥ using GitHub Pages
+      © <span id="year"></span> Ben Deverett
     </footer>
   </main>
 
