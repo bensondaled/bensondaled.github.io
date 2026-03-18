@@ -26,7 +26,7 @@
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1300px;
       width: 100%;
       background: var(--card);
       border-radius: var(--radius);
@@ -136,7 +136,7 @@
     /* --- Project Grid --- */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 1.5em;
     }
@@ -169,21 +169,31 @@
 
     /* --- Title always visible --- */
     .title-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-      color: white;
-      padding: 16px;
-      box-sizing: border-box;
-      z-index: 1;
-    }
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 70px; /* <-- key: force gradient height */
+          display: flex;
+          align-items: flex-end;
+          padding: 12px 16px;
+          box-sizing: border-box;
+          z-index: 1;
+
+          background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.85) 0%,
+            rgba(0,0,0,0.55) 40%,
+            rgba(0,0,0,0.0) 100%
+          );
+        }
 
     .title-bar h3 {
-      margin: 0;
-      font-size: 1.05rem;
-    }
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
 
     /* --- Description appears on hover --- */
     .overlay {
@@ -284,7 +294,7 @@
         
         <div class="project-tile">
           <img src="img/causal.png" alt="causal" />
-          <div class="title-bar"><h3>How humans learn causality in the world</h3></div>
+          <div class="title-bar"><h3>How humans learn causal relationships</h3></div>
           <div class="overlay"><p><a href="https://charleskemp.com/papers/deverettk_learningdeterministiccausalnetworksfromobservationaldata.pdf" style="color:#fff;text-decoration:underline;">Bayesian modeling of human inference strategies for inferring causality between observed events.</a></p></div>
         </div>
         
