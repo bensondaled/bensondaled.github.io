@@ -186,6 +186,7 @@
   .overlay {
     position: absolute;
     inset: 0;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -202,6 +203,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  .title-bar { transition: opacity 0.3s ease; }
+  .project-tile:hover .title-bar { opacity: 0; }
 
   .overlay p {
     font-size: 0.82rem;
